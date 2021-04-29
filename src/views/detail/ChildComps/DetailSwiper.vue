@@ -1,8 +1,8 @@
 <template>
   <swiper class="detail-swiper">
-    <swiper-item v-for="(item, index) in topImages" :key="index">
+    <swiper-item v-for="(item, indey) in topImages" :key="indey">
       <a href="javascript:;">
-        <img :src="item" alt="" />
+        <img :src="item" alt="" preview="indey" preview-text="描述文字" />
       </a>
     </swiper-item>
   </swiper>

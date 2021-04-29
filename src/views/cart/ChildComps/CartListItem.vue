@@ -62,8 +62,19 @@ export default {
 
 <style scoped>
 .jianfa,
-.zengjia {
-  width: 30px;
+.zengjia,
+.shanchu {
+  width: 25px;
+  height: 20px;
+  border: 0;
+  margin-right: 2px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+.shanchu {
+  font-size: 12px;
+  color: orangered;
+  width: 40px;
 }
 .list-item {
   display: flex;
@@ -90,11 +101,13 @@ export default {
   margin-bottom: 25px;
 }
 .price {
+  display: inline-block;
+  height: 30px;
   color: orangered;
 }
 .count {
   float: right;
-  margin-right: 30px;
+  margin-right: 5px;
 }
 .check-btn {
   margin-top: 45px;

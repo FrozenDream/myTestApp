@@ -9,6 +9,8 @@
         :key="index"
         alt=""
         @load="imgLoad"
+        preview="index"
+        preview-text="描述文字"
       />
     </div>
   </div>

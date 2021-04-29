@@ -77,18 +77,20 @@ export default {
   line-height: 44px;
   font-size: 16px;
 }
-.bottom-bar > div {
-  flex: 1;
-}
-.allCheck > span {
-  margin-left: 30px;
+.allCheck {
+  width: 80px;
+  padding-left: 26px;
 }
 .checked-button {
   position: absolute;
-  left: 5px;
+  left: 0;
   top: 0;
 }
+.total {
+  flex: 1;
+}
 .calc {
+  width: 100px;
   color: #fff;
   background-color: red;
   text-align: center;
