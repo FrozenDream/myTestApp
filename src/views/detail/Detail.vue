@@ -33,11 +33,11 @@ import DetailCommendInfo from './ChildComps/DetailCommendInfo'
 import GoodsList from 'components/content/goods/GoodsList'
 import DetailBottomBar from './ChildComps/DetailBottomBar'
 // 公共组件(功能组件)
-import Scroll from '../../components/common/scroll/Scroll'
+import Scroll from 'components/common/scroll/Scroll'
 import { debounce } from 'common/utils'
 import { backTopMixin } from 'common/mixin'
 // 网络请求
-import { getDetail, Goods, shopInfo, goodsParams, getRecommend } from '../../network/detail'
+import { getDetail, Goods, shopInfo, goodsParams, getRecommend } from 'network/detail'
 export default {
   name: 'Detail',
   mixins: [backTopMixin],
@@ -53,7 +53,7 @@ export default {
       recommends: [],
       themeTopYs: [],
       getThemeTopYs: null,
-      currentIndex: 0
+      currentIndex: 0,
     }
   },
   components: {
@@ -152,7 +152,8 @@ export default {
       //   console.log(res);
       // })
       this.$store.dispatch('addCart', product).then(res => {
-        console.log(res);
+
+        this.$toast.show(res, 1500)
       })
     }
   }

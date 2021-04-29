@@ -19,11 +19,16 @@ export default {
     })
 
   },
+  // 减少
   deCart(context, payload) {
     context.commit('deToCart', payload)
   },
+  // 增加
   inCart(context, payload) {
     context.commit('inToCart', payload)
   },
-
+  // 删除
+  delCart(context, payload) {
+    context.commit('delToCart', payload)
+  }
 }

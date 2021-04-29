@@ -7,7 +7,6 @@
       :titles="['流行', '精选', '新款']"
       @tabClick="tabClick"
       ref="tabControl2"
-      class="tabControl"
       v-show="isTabFixed"
     />
     <scroll
@@ -20,7 +19,6 @@
     >
       <home-swiper
         :banners="banners"
-        class="home-swiper"
         @swiperImage.once="swiperImage"
       ></home-swiper>
       <home-recommend :recommends="recommends"></home-recommend>

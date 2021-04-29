@@ -17,6 +17,7 @@
         >￥{{ itemInfo.price }}
         <button class="zengjia" @click="jiafa">+</button>
         <button class="jianfa" @click="jianfa">-</button>
+        <button class="shanchu" @click="shanchu">删除</button>
       </span>
       <span class="count">X{{ itemInfo.count }}</span>
     </div>
@@ -46,10 +47,6 @@ export default {
       this.itemInfo.checked = !this.itemInfo.checked
     },
     jianfa() {
-      // for (let i = 0; i < this.$store.state.cartList.length; i++) {
-      //   this.currentIndex = i
-      //   console.log(this.$store.state.cartList);
-      // }
       this.$emit('jianfa')
     },
     jiafa() {

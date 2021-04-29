@@ -9,13 +9,20 @@ export default {
   name: 'Toast',
   data() {
     return {
-      isShow: false,
-      message: ''
+      message: '',
+      isShow: false
     }
   },
   methods: {
-
-  },
+    show(message, duration = 1500) {
+      this.isShow = true
+      this.message = message
+      setTimeout(() => {
+        this.isShow = false
+        this.message = ''
+      }, duration)
+    }
+  }
 }
 
 </script>
@@ -30,5 +37,6 @@ export default {
   transform: translate(-50%, -50%);
   padding: 10px 10px;
   border-radius: 10px;
+  z-index: 999;
 }
 </style>
