@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "119093",
+      "name": "信封",
+      "font_class": "icon03",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "724490",
+      "name": "手机",
+      "font_class": "shouji-copy",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "3040907",
+      "name": "王冠",
+      "font_class": "wangguan",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "4028486",
+      "name": "积分",
+      "font_class": "jifen",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "5515888",
+      "name": "购物袋",
+      "font_class": "gouwudai",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "14579641",
+      "name": "头像",
+      "font_class": "avatar",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
       "icon_id": "6684863",
       "name": "复选圆2",
       "font_class": "fuxuanyuan",

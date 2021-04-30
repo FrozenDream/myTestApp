@@ -74,9 +74,11 @@ export default {
     }
   },
   created() {
+    // 页面初始化数据
     this.getCategory()
     this.getSubcategory('3627')
     // 点击左边分类动态绑定当前点击的miniWallkey
+    // 右边页面商品推荐初始化数据
     this.getCategoryDetail('10062603', 'pop')
     this.getCategoryDetail('10062603', 'new')
     this.getCategoryDetail('10062603', 'sell')
@@ -132,6 +134,7 @@ export default {
       getCategoryDetail(miniWallkey, type).then(res => {
         // 动态获取类型 点击后先清空数组
         // this.categorysData[type].list = []
+        // this.categorysData[type].list.push(...res)
         this.categorysData[type].list = res
       })
     }
