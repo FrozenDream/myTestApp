@@ -5,7 +5,6 @@
       :key="index"
       :goods-item="item"
     ></goods-list-item>
-    <div></div>
   </div>
 </template>
 
