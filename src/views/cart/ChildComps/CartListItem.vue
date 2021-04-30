@@ -15,9 +15,9 @@
       <div class="desc">{{ itemInfo.desc }}</div>
       <span class="price"
         >￥{{ itemInfo.price }}
-        <button class="zengjia" @click="jiafa">+</button>
-        <button class="jianfa" @click="jianfa">-</button>
-        <button class="shanchu" @click="shanchu">删除</button>
+        <button class="increase" @click="increase">+</button>
+        <button class="subtract" @click="subtract">-</button>
+        <button class="del" @click="del">删除</button>
       </span>
       <span class="count">X{{ itemInfo.count }}</span>
     </div>
@@ -46,14 +46,14 @@ export default {
     checkedClick() {
       this.itemInfo.checked = !this.itemInfo.checked
     },
-    jianfa() {
-      this.$emit('jianfa')
+    subtract() {
+      this.$emit('subtract')
     },
-    jiafa() {
-      this.$emit('jiafa')
+    increase() {
+      this.$emit('increase')
     },
-    shanchu() {
-      this.$emit('shanchu')
+    del() {
+      this.$emit('del')
     }
   }
 }
@@ -61,9 +61,9 @@ export default {
 </script>
 
 <style scoped>
-.jianfa,
-.zengjia,
-.shanchu {
+.subtract,
+.increase,
+.del {
   width: 25px;
   height: 20px;
   border: 0;
@@ -71,7 +71,7 @@ export default {
   line-height: 20px;
   vertical-align: middle;
 }
-.shanchu {
+.del {
   font-size: 12px;
   color: orangered;
   width: 40px;

@@ -4,9 +4,9 @@
       v-for="(item, index) in cartList"
       :key="index"
       :item-info="item"
-      @jianfa="jianfa(index)"
-      @jiafa="jiafa(index)"
-      @shanchu="shanchu(index)"
+      @subtract="subtract(index)"
+      @increase="increase(index)"
+      @del="del(index)"
     />
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     ...mapMutations(['deToCart', 'inToCart']),
-    jianfa(index) {
+    subtract(index) {
       // 通过actions进行一系列操作后再修改mutation的值
       this.$store.dispatch('deCart', index)
       if (this.cartList[index].count <= 0) {
@@ -35,14 +35,14 @@ export default {
       // this.deToCart(index)
       // this.cartList[index].count -= 1
     },
-    jiafa(index) {
+    increase(index) {
       // 通过actions进行一系列操作后再修改mutation的值
       this.$store.dispatch('inCart', index)
       // 直接修改mutation的值
       // this.inToCart(index)
       // this.cartList[index].count += 1
     },
-    shanchu(index) {
+    del(index) {
       this.$store.dispatch('delCart', index)
     }
   }
