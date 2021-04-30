@@ -28,6 +28,13 @@
             <div class="title">{{ item.title }}</div>
           </div>
         </div>
+        <tab-control
+          :titles="['综合', '新品', '销量']"
+          ref="tabControl"
+          class="tabControl"
+          @tabClick="tabClick"
+        />
+        <goods-list :goods="showCate" />
       </scroll>
     </div>
   </div>
@@ -37,43 +44,96 @@
 // 公共组件
 import NavBar from 'components/common/navbar/NavBar'
 import Scroll from 'components/common/scroll/Scroll'
+import tabControl from 'components/content/tabControl/tabControl'
+import GoodsList from 'components/content/goods/GoodsList'
 // 子组件
 // 网络请求.
-import { getCategory, getSubcategory } from 'network/category'
+import { getCategory, getSubcategory, getCategoryDetail } from 'network/category'
 export default {
   name: 'Category',
   components: {
     NavBar,
-    Scroll
+    Scroll,
+    tabControl,
+    GoodsList
   },
   data() {
     return {
       categorys: [],
       maitKeys: '',
       currentIndex: 0,
-      maitKeyList: []
+      maitKeyList: [],
+      categorysData: {
+        'pop': { page: 0, list: [] },
+        'new': { page: 0, list: [] },
+        'sell': { page: 0, list: [] },
+      },
+      // 请求miniWallkey参数
+      miniWallkey: null,
+      goodsType: 'pop'
     }
   },
   created() {
     this.getCategory()
     this.getSubcategory('3627')
+    // 点击左边分类动态绑定当前点击的miniWallkey
+    this.getCategoryDetail('10062603', 'pop')
+    this.getCategoryDetail('10062603', 'new')
+    this.getCategoryDetail('10062603', 'sell')
+  },
+  computed: {
+    showCate() {
+      return this.categorysData[this.goodsType].list
+    },
   },
   methods: {
+    tabClick(index) {
+      switch (index) {
+        case 0:
+          this.goodsType = 'pop'
+          break
+        case 1:
+          this.goodsType = 'new'
+          break
+        case 2:
+          this.goodsType = 'sell'
+          break
+      }
+    },
+
+    // 商品左边分类
     getCategory() {
       getCategory().then(res => {
         this.categorys = res.data.category.list
+
       })
     },
+    // 右边分类
     getSubcategory(maitKey) {
       getSubcategory(maitKey).then(res => {
         this.maitKeyList = res.data.list
-        console.log(this.maitKeyList);
       })
     },
+    // 点击当前左边分类请求分类右边数据
     itemClick(index) {
       this.currentIndex = index
       this.maitKeys = this.categorys[index].maitKey
       this.getSubcategory(this.maitKeys)
+      // 可以获取miniWallkey
+      this.miniWallkey = this.categorys[index].miniWallkey
+      // console.log(this.miniWallkey);
+      // 动态获取当前左边分类按钮
+      this.getCategoryDetail(this.categorys[index].miniWallkey, 'pop')
+      this.getCategoryDetail(this.categorys[index].miniWallkey, 'new')
+      this.getCategoryDetail(this.categorys[index].miniWallkey, 'sell')
+    },
+    // 请求分类页商品数据
+    getCategoryDetail(miniWallkey, type) {
+      getCategoryDetail(miniWallkey, type).then(res => {
+        // 动态获取类型 点击后先清空数组
+        // this.categorysData[type].list = []
+        this.categorysData[type].list = res
+      })
     }
   }
 }
@@ -126,4 +186,9 @@ export default {
   height: 80px;
   margin-top: 20px;
 }
+/* .tabControl {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+} */
 </style>
